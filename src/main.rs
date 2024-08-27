@@ -1,12 +1,13 @@
-use std::io::{stdout, Write};
-use actix_web::{post, web, App, HttpResponse, HttpServer, Responder};
+use actix_files as fs;
 use actix_files::NamedFile;
-use actix_web::HttpRequest;
-use std::path::PathBuf;
-use std::process::Command;
 use actix_multipart::Multipart;
+use actix_web::HttpRequest;
+use actix_web::{post, web, App, HttpResponse, HttpServer, Responder};
 use futures_util::stream::StreamExt as _;
 use futures_util::TryStreamExt;
+use std::io::Write;
+use std::path::PathBuf;
+use std::process::Command;
 
 async fn index(req: HttpRequest) -> actix_web::Result<NamedFile> {
     let path: PathBuf = req.match_info().query("filename").parse().unwrap();
@@ -64,8 +65,13 @@ async fn search(mut payload: Multipart) -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .route("/{filename:.*}", web::get().to(index))
+            .service(
+                fs::Files::new("/static", "./static")
+                    .show_files_listing()
+                    .use_last_modified(true),
+            )
             .service(search)
+            .route("/{filename:.*}", web::get().to(index))
     })
         .bind(("127.0.0.1", 8080))?
         .run()
