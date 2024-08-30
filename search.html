@@ -3,15 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文件上传</title>
+    <title>文件上传与分析结果展示</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn-upload {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-upload:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e7f4ea;
+            border-left: 5px solid #28a745;
+            border-radius: 4px;
+            display: none;
+        }
+        #result h2 {
+            margin: 0 0 10px 0;
+            color: #28a745;
+        }
+        #resultContent {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
-<h1>上传文件</h1>
-<form action="/search" method="post" enctype="multipart/form-data">
-    <label for="file">选择文件:</label>
-    <input type="file" id="file" name="file">
-    <br><br>
-    <input type="submit" value="上传">
-</form>
+
+<div class="container">
+    <h1>文件上传与分析</h1>
+    <p>请上传文件以获取分析结果。</p>
+
+    <form id="uploadForm" enctype="multipart/form-data" class="form-group">
+        <label for="file">选择文件:</label>
+        <input type="file" id="file" name="file" required>
+        <button type="button" class="btn-upload" onclick="uploadFile()">上传文件</button>
+    </form>
+
+    <div id="result">
+        <h2>分析结果</h2>
+        <pre id="resultContent"></pre>
+    </div>
+</div>
+
+<script>
+    function uploadFile() {
+        const fileInput = document.getElementById('file');
+        const resultDiv = document.getElementById('result');
+        const resultContent = document.getElementById('resultContent');
+
+        if (!fileInput.files.length) {
+            alert('请选择一个文件进行上传。');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+
+        fetch('/search', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())  // 获取服务器返回的文本
+            .then(data => {
+                resultContent.textContent = data; // 显示服务器返回的分析结果
+                resultDiv.style.display = 'block'; // 显示结果区域
+            })
+            .catch(error => {
+                console.error('上传失败:', error);
+                resultContent.textContent = '上传失败，请重试。';
+                resultDiv.style.display = 'block';
+            });
+    }
+</script>
+
 </body>
 </html>

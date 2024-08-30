@@ -97,7 +97,4 @@ async fn stream() -> HttpResponse {
     HttpResponse::Ok()
         .content_type("application/json")
         .streaming(body)
-}
-
  */
-
