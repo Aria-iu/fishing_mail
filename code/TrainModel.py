@@ -2,10 +2,33 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle
 import numpy as np
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import warnings
 warnings.filterwarnings('ignore')
 import os
+
+from sklearn.ensemble import BaggingClassifier
+import numpy as np
+from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+
+class CompositeClassifier(BaseEstimator, ClassifierMixin):
+    def __init__(self):
+        self.classifiers = [MultinomialNB(), LogisticRegression(max_iter=1000)]
+
+    def fit(self, X, y):
+        self.classes_ = np.unique(y)  # 必须设置`classes_`属性来符合`ClassifierMixin`的规范
+        for clf in self.classifiers:
+            clf.fit(X, y)
+
+    def predict(self, X):
+        # 使用每个分类器进行预测，然后取平均
+        predictions = [clf.predict_proba(X) for clf in self.classifiers]
+        # 将概率矩阵平均
+        avg_predictions = np.mean(predictions, axis=0)
+        # 返回类别预测
+        return self.classes_[np.argmax(avg_predictions, axis=1)]
 
 # 邮件内容清洗
 def clean_email(content):
@@ -18,6 +41,7 @@ def clean_email(content):
     return ' '.join(content)
 
 def train(emails, labels):
+    print('train: ')
 
     # 训练特征提取器
     stopwords = [word.strip() for word in open('data/stopwords.txt', encoding='utf-8', errors='ignore')]
@@ -25,14 +49,56 @@ def train(emails, labels):
     emails = extractor.fit_transform(emails)
     features = extractor.get_feature_names_out()
     # print('数据集特征:', len(features), features)
-    print('数据集大小:', len(features))
+    print('数据集特征大小:', len(features))
+    # emails = [0 if feature == 'spam' else 1 for feature in features]
 
-    # 实例化算法模型
-    estimator = MultinomialNB(alpha=0.1)
-    estimator.fit(emails, labels)
+    # 训练Bayes模型
+    estimator_bayes = MultinomialNB(alpha=0.1)
+    estimator_bayes.fit(emails, labels)
+    y_preds_bayes = estimator_bayes.predict(emails)
+    print('Bayes模型训练完成')
 
-    y_preds = estimator.predict(emails)
-    print('训练集准确率:', accuracy_score(labels, y_preds))
+    # 训练Logic模型
+    estimator_logic = LogisticRegression(max_iter=1000)
+    estimator_logic.fit(emails, labels)
+    y_preds_logic = estimator_logic.predict(emails)
+    print('Logic模型训练完成')
+
+
+    
+
+    # 训练Bagging模型
+    composite_clf = CompositeClassifier()
+    estimator_bagging = BaggingClassifier(
+        # estimator=LogisticRegression(max_iter=1000),
+        estimator=composite_clf,
+        n_estimators=2,  # 训练多个复合分类器
+        random_state=42
+    )
+    estimator_bagging.fit(emails, labels)
+    y_preds_bagging = estimator_bagging.predict(emails)
+    print('Bagging模型训练完成')
+
+
+    print('训练集准确率')
+    print('bayes:\t\t', accuracy_score(labels, y_preds_bayes))
+    print('logic:\t\t', accuracy_score(labels, y_preds_logic))
+    print('bagging:\t', accuracy_score(labels, y_preds_bagging))
+
+    print('训练集精确率')
+    print('bayes:\t\t', precision_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', precision_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', precision_score(labels, y_preds_bagging, pos_label='ham'))
+
+    print('训练集召回率')
+    print('bayes:\t\t', recall_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', recall_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', recall_score(labels, y_preds_bagging, pos_label='ham'))
+
+    print('训练集F1-score')
+    print('bayes:\t\t', f1_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', f1_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', f1_score(labels, y_preds_bagging, pos_label='ham'))
 
     # 指定文件夹路径
     folder_path = "model"
@@ -45,35 +111,62 @@ def train(emails, labels):
 
     # 存储特征提取器和模型
     pickle.dump(extractor, open('model/extractor.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
-    pickle.dump(estimator, open('model/estimator.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+    pickle.dump(estimator_bayes, open('model/estimator_bayes.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+    pickle.dump(estimator_logic, open('model/estimator_logic.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+    pickle.dump(estimator_bagging, open('model/estimator_bagging.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
 
 def evaluate(emails, labels):
 
     # 加载特征提取器
     extractor = pickle.load(open('model/extractor.pkl', 'rb'))
     # 加载算法模型
-    estimator = pickle.load(open('model/estimator.pkl', 'rb'))
+    estimator_bayes = pickle.load(open('model/estimator_bayes.pkl', 'rb'))
+    estimator_logic = pickle.load(open('model/estimator_logic.pkl', 'rb'))
+    estimator_bagging = pickle.load(open('model/estimator_bagging.pkl', 'rb'))
 
     # 提取特征
     emails = extractor.transform(emails)
-    # 模型预测
-    y_preds = estimator.predict(emails)
-    print(y_preds)
-    print('验证集准确率:', accuracy_score(labels, y_preds))
 
-def check(emails):
+    # 模型预测
+    y_preds_bayes = estimator_bayes.predict(emails)
+    y_preds_logic = estimator_logic.predict(emails)
+    y_preds_bagging = estimator_bagging.predict(emails)
+
+
+    print('验证集准确率')
+    print('bayes:\t\t', accuracy_score(labels, y_preds_bayes))
+    print('logic:\t\t', accuracy_score(labels, y_preds_logic))
+    print('bagging:\t', accuracy_score(labels, y_preds_bagging))
+
+    print('验证集精确率')
+    print('bayes:\t\t', precision_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', precision_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', precision_score(labels, y_preds_bagging, pos_label='ham'))
+
+    print('验证集召回率')
+    print('bayes:\t\t', recall_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', recall_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', recall_score(labels, y_preds_bagging, pos_label='ham'))
+
+    print('验证集F1-score')
+    print('bayes:\t\t', f1_score(labels, y_preds_bayes, pos_label='ham'))
+    print('logic:\t\t', f1_score(labels, y_preds_logic, pos_label='ham'))
+    print('bagging:\t', f1_score(labels, y_preds_bagging, pos_label='ham'))
+
+def recognize(emails):
     
     # 加载特征提取器
     extractor = pickle.load(open('model/extractor.pkl', 'rb'))
     # 加载算法模型
-    estimator = pickle.load(open('model/estimator.pkl', 'rb'))
+    estimator = pickle.load(open('model/estimator_logic.pkl', 'rb'))
 
     # 提取特征
     emails = extractor.transform(emails)
     # 模型预测
     y_preds = estimator.predict(emails)
+    results = ['正常邮件' if predict == 'ham' else '钓鱼邮件' for predict in y_preds]
 
-    return y_preds
+    return results
 
 
 if __name__ == '__main__':
