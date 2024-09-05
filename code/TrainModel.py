@@ -65,7 +65,7 @@ def train(emails, labels):
     print('Logic模型训练完成')
 
 
-    
+
 
     # 训练Bagging模型
     composite_clf = CompositeClassifier()
@@ -153,14 +153,29 @@ def evaluate(emails, labels):
     print('logic:\t\t', f1_score(labels, y_preds_logic, pos_label='ham'))
     print('bagging:\t', f1_score(labels, y_preds_bagging, pos_label='ham'))
 
-def recognize(emails):
-    
+import email
+from email import policy
+from email.parser import BytesParser
+def read_email_file(email_file_path):
+    with open(email_file_path, 'rb') as email_file:
+        msg = BytesParser(policy=policy.default).parse(email_file)
+        for part in msg.walk():
+            if part.get_content_type() == 'text/plain':
+                body = part.get_content()
+                return body
+        return None
+
+def recognize(email_file_paths):
+
+    emails = [read_email_file(email_file_path) for email_file_path in email_file_paths]
+
     # 加载特征提取器
     extractor = pickle.load(open('model/extractor.pkl', 'rb'))
     # 加载算法模型
     estimator = pickle.load(open('model/estimator_logic.pkl', 'rb'))
 
-    # 提取特征
+    # TrainModel.py
+    print(emails)  # 添加这一行来输出 emails 列表，查看其内容
     emails = extractor.transform(emails)
     # 模型预测
     y_preds = estimator.predict(emails)
@@ -183,3 +198,5 @@ if __name__ == '__main__':
     emails = test_data['email']
     labels = test_data['label']
     evaluate(emails, labels)
+
+    print(recognize(['test.eml']))
