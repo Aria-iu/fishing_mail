@@ -1,13 +1,20 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e0e0e0;  /* 背景为浅灰色 */
+    background-image: url('backimg.avif'); /* 背景图像 */
+    background-size: cover; /* 使背景图像覆盖整个页面 */
+    background-position: center center; /* 背景图像居中显示 */
+    background-repeat: no-repeat; /* 防止背景图像重复 */
     color: #333;  /* 文字颜色为深灰色 */
     margin: 0;
     padding: 0;
 }
 
+
 .navbar {
     background-color: #4a4a4a;  /* 导航栏为深灰色 */
+    background-image: url('pattern.jpg'); /* 添加背景花纹 */
+    background-size: cover; /* 使背景图片覆盖整个导航栏 */
+    background-blend-mode: overlay; /* 将背景图片与背景颜色混合 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
@@ -96,6 +103,9 @@ footer {
     text-align: center;
     padding: 10px;
     background-color: #4a4a4a;  /* 页脚颜色与导航栏一致 */
+    background-image: url('pattern.jpg'); /* 添加背景花纹 */
+    background-size: cover; /* 使背景图片覆盖整个页脚 */
+    background-blend-mode: overlay; /* 将背景图片与背景颜色混合 */
     color: white;
     position: fixed;
     bottom: 0;

@@ -11,5 +11,7 @@ code:
 	code
 clash:
 	cd $(CLASH_DIR) && $(CLASH_EXEC) -d .
+tex:
+	texstudio
 QQ:
 	~/下载/QQ_3.2.12_240819_x86_64_01.AppImage
