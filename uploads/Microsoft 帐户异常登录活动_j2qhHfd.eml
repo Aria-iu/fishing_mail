@@ -1,0 +1,201 @@
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (mail-mw2nam10on2071d.outbound.protection.outlook.com [2a01:111:f403:2412::71d])
+	by newxmmxszb1-8.qq.com (NewMX) with SMTP id 94393EFE
+	for <1344548187@qq.com>; Fri, 19 Jul 2024 09:37:03 +0800
+X-QQ-mid: xmmxszb1-8t1721353023t6okmph5m
+X-QQ-XMAILINFO: Od/KgN9U2V5aE/yRdaGBtIkyhjCQ7roafvdY2jj80omQTrAEVxa851ttzdQGVW
+	 IDJV3ACrccxhnnNbV1SXo2F8JxCzUHKTyylEvEgFfZOjobg0RN9uX9cKESjFCg2hToOFICKVe3yY
+	 NoM6v/Fz6exGrr9UPX/relELgdHOxhyY1pedNxfuXE88IysbpqEiFTha0iCBa61TQK456UgLO0lT
+	 pC1xFJLg9r+6w0CJTagvlAXr9o2+n76Kfm0ZXokM/KKMpsWwesg3lHhqz5rV0gkg9c3+M6hWLADA
+	 lgg1g9CVfJvrGiPOfG3v+SSZRMTdYur7mSRnYdB5FNYcbZxIMmK2yG7h1xWmhbAyqeo14QRtvQo1
+	 hDjTxvJKjzbEV0lTLDwmfI21louQ10feVyqU9UiWiXSutFncoaKSDnPqaahODjvsq3R4+eT0p68J
+	 LnfEebA5BRuJEqm40YY+IOnZX9HnF7C2HHejKgqXGCmHXSgjGvKENI4dF0+7hfklD3uCX8fg0g0o
+	 B+r83qpKMAP3R5dRPTFYKvSqu4+JN0i2ee9j1fnb+m7lJ19wOs9KpZrUgcCc2oP06UjBf/nTEF7G
+	 WsRc7rDAPpmkZW0UkNWmhDM4WnNP3XdHxFMhhJD8CwL/ECq+v+fX9sT+T8oddfERc7RKFleAEHvW
+	 1ynXNqeWlOzdx/Pk9wzKE+OFN1fwP7XuTYqA/3Cpysyx76mxuSWfwW/L/owfFQazbgLxhTg1HZXR
+	 skuZ7RIn3VCmozuW/P+cqyXWZsN1dodqYTx31gbujNnUQBVisxm94ojKS/01DWzaU/XwmRmt40Gy
+	 ea7Ipu7r2thar3TfqoQ/3FzxOGf3K4FU9jYZKSpSsrTwpWzoIYo7JEuKSmsBv4cEanHnrdRwtBZx
+	 IqiU940AjPXCzzJVxUe5omLsVCUtTQ/kdxXMPDOikEa6113TOgmasonZE+Gv+S32XeCt54fiy9xj
+	 E4Y52vhe1/lQCme1YF7rIiJ5tSMjM1euUkmlrvDvFxaZu1fr7kOYRlEWsK2nFhQ8MeLgQ0gIlkrb
+	 KCFAmhx60R1cPhLAdrya/cisxiZqE/Tip4Bj4VOAd9FKDJIukbDMeM/AozrXzGaiEdhiUsErq8xu
+	 rjYvkJF18my/d6Hs/oMK+4z9FkBsHF5bO5jooOC6rlWZYs+bZH0usA5nWrteHFuPZ6zsaUDhX94U
+	 r1xbioBD1fJtyYE3Q9ZhL8iZy+BMr6G4Unj89D0UE8lS4T5ZpSs9zKS4+A29JqRyPDSmOq2mFFW8
+	 s4OIcvLu73fb+o7dVuwn5BnKVQeeHfmmF9ZbIsizU4zrJIbvelstXN+lIv5i5OrpmLWmEITJUWA+
+	 4caOreYrcQ9Zy58UgnQe6iKI1W+5E6a77Btszyhmir6V4f32bHX901W/BK8EMmOtkDAhiaYiblkX
+	 urSPEzOVLVyeJlNtqXtAU6
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+Authentication-Results: mx.qq.com; spf=pass(2a01:111:f403:2412::71d) smtp.mail
+	 from=<account-security-noreply@accountprotection.microsoft.com>; dkim=pass(s
+	 ignature was verified) header.d=accountprotection.microsoft.com; dmarc=pass(
+	 p=REJECT sp=REJECT pct=100) header.from=accountprotection.microsoft.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=tfTiGdJriLZq7v8qeCZbAUhpiGCNS7Rfho3WU0oRt3BldO/5S/zddf3bMkT5qeDXlpNzvYwXB7vdfcUXOU658BF9P56X9/IHeBdhfrkvAk6qY+awetSWQZ8cRzJU9tIJ596YYkY3D7aQdVYi6fDA4Xn4mO8JiE/66N6Rom2EIql0Xxn1EQU3QxpYF/NN6a/UQ4kyr7yTfkedGS4rabDFA2tyNJYH2CHkDX7i+ZeUXX4uAoh5104hfNu29GMmKB8ACYVzOfkV3dNn2a9l30jQSj9rQu+9rwnqiMVRTMVk//SU3fFz7tPoWoOR8x7tzs39dWxEezh2hKOz5DszPh3pJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VPqOftxt871MVOVBySIsjJhJht8vtzdn3ls5MqnL9H4=;
+ b=jZw47Sg9fK+V0Vfu3Fd2wUoGH9Im2hGY72U6+5LdRfJ1K6r7/PDulumYKL12cWIHCKrGOHubgtVuvSnI7aDbJlQJCC30wKp9HNBs2shRlm01CPxhodZR6/1+aOsPsEBLAVQM7efb2ipzK8HBYmDwDIQxHJM9kXg3I8MF+1Hed6fcEc80cI3MceP7TZPAPIb/CRzlnxmIWJKU27jzJS4mtdIuHYNSSJ/5R1unzDSC3hcC8vlLufOGoEHIbqMkK/37s8meWr/5eV/Ea/f7cI/QJGPcjXiTzWdoGpna2tTrPW7Af4qey48f/KzlvwQyYw6OV3+H8u96lm6OFFAd/Pl+nw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none
+ action=none header.from=accountprotection.microsoft.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=accountprotection.microsoft.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VPqOftxt871MVOVBySIsjJhJht8vtzdn3ls5MqnL9H4=;
+ b=Uv3PirMFQ/od8jaF6+7ngSsllQI8ZuwAfY5f45vNER30cr5EC4JNYPS8lAR4WSf9Ray1yfG6D3H1sM82dNRV8NFCROlgpnZYSITGEs2MKc/ZN4Xn/2t7Vq4iJNbha4h1kLIocXtEdlSpp9Mfr6xWmVgtZWo8Uw5o7g9UUr5pevM=
+Received: from CH0PR08CA0012.namprd08.prod.outlook.com (2603:10b6:610:33::17)
+ by MW4PR16MB5029.namprd16.prod.outlook.com (2603:10b6:303:1b4::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7762.28; Fri, 19 Jul
+ 2024 01:37:02 +0000
+Received: from DS3PEPF000099DC.namprd04.prod.outlook.com
+ (2603:10b6:610:33:cafe::34) by CH0PR08CA0012.outlook.office365.com
+ (2603:10b6:610:33::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7762.29 via Frontend
+ Transport; Fri, 19 Jul 2024 01:37:02 +0000
+X-MS-Exchange-Authentication-Results: spf=none (sender IP is 52.234.111.146)
+ smtp.mailfrom=accountprotection.microsoft.com; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none
+ header.from=accountprotection.microsoft.com;
+Received: from accountprotection.microsoft.com (52.234.111.146) by
+ DS3PEPF000099DC.mail.protection.outlook.com (10.167.17.198) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7784.11 via Frontend Transport; Fri, 19 Jul 2024 01:37:02 +0000
+From: Microsoft =?utf-8?b?5biQ5oi35Zui6Zif?=
+	<account-security-noreply@accountprotection.microsoft.com>
+Date: Thu, 18 Jul 2024 18:37:01 -0700
+Subject: Microsoft =?utf-8?b?5biQ5oi35byC5bi455m75b2V5rS75Yqo?=
+To: 1344548187@qq.com
+X-Priority: 3
+X-MSAPipeline: MessageDispatcherEOP
+Message-ID: <MAPRLWLWLNU4.RPLB92QZ6BVH1@BY1PEPF00001EEA>
+X-MSAMetaData:
+ =?us-ascii?q?DrVRkhbXxG5i4VZWyXQm*31kGo6pVDhlWArz!pLxe8hkNtGwYI8Kso8TH*TlT?=
+ =?us-ascii?q?DP6!jmi*02*d3lnwvg4c1Tnxoi8M3UoP9J0Al4jXmHVUcfJBoa66D3BDSmTnp?=
+ =?us-ascii?q?KJ!ywe4Q$$?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=-99RN0denONUuSCuWD5cqrg=="
+Return-Path: account-security-noreply@accountprotection.microsoft.com
+X-MS-TrafficTypeDiagnostic:
+	DS3PEPF000099DC:EE_FirstParty-MicrosoftAccount-V3-System|MW4PR16MB5029:EE_FirstParty-MicrosoftAccount-V3-System
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: bbe20a88-3380-4478-c574-08dca79349e6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|61400799027;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?c0lPajVyS21ENzBIc0FCOEg5S093aG9Fdmt0eis2dVAwd1FuajVNOE5uN2c0?=
+ =?utf-8?B?TExsV2oycTBMbDdxT243RTc2TDZ0ektOUlJNd24wczgyeGxFc2F6ekE3eE90?=
+ =?utf-8?B?NGZPZnQ1TnYzM29PZENaVEhkdDBCVUhUblBPbzN6Tk5xcitZN2lPOFZjcjZE?=
+ =?utf-8?B?ZEYwdDUrYkR0RlkweURSQ1Bma3YvZ2dLWXNKdkd5L1g5Rm1CNVVtcWExQjAx?=
+ =?utf-8?B?SXJxMTkzSVhJT1I1Zml5VGt4NDdSa2N2MGIzaGUxQ2tyUVdQaEJmaVRCWkw3?=
+ =?utf-8?B?RzlhOEczczZ0akV1QmVHUUFGeE5SZlhjUUFsMGJ5SmVRVmN5WGhBMFdTSHNK?=
+ =?utf-8?B?UVRENHB6cTc1QzJsT3BPN0FLSmlwSG41ZTdaU3hVWTBwams1dE5lODB4T0dW?=
+ =?utf-8?B?OHFIcU51ajJpT1hWVWQ1RnVzOXFoc3FpWWVjMnB5NXZGeEtmK01ZMVZHTTlL?=
+ =?utf-8?B?SlZncmlpYnp6OXJJQ0xrb1ExTTRjeVhieUhGd09raTF4b3F1eXYxY1VoWjRk?=
+ =?utf-8?B?dWZNRVRkN05LT0pwZTN0b3N6QXlXbnBQbWQ4NzZIU2FZcGI2dVJNdHpQNytI?=
+ =?utf-8?B?aGhaYlN0V1F4aklrM1pVWTR1UzVuUk45cEw5STZ3dFNZdTRudkUxTE5ybzdr?=
+ =?utf-8?B?UCtubHNVZU1YOTEvTFhjTS9kNFhKelJ0ZTVJRW10QVlrNTdheVdTL2FrT3A4?=
+ =?utf-8?B?Q2x3N1JtMUZkaHVyQUk3MmpMblJzNFZrNGx3QmlQS3FJN2Vrbkd2UUFaMitD?=
+ =?utf-8?B?QkRlSTNKLzNCa1pLYnFGMlp4U2I3SjdwSE9PRXhCdzNHY25NQ2oydG5EUDRv?=
+ =?utf-8?B?OXhmOWRIaFZHbWNBY0V6djd4blQwWkdKYmU1eEpsaFNMOHRCUlZjYXJWcXAy?=
+ =?utf-8?B?SW5XUDhqRHBFNXhvV2dQQ05MRitUUjB5TEhEUVg0L1BQR1M5Qm0xbmMrM1Iz?=
+ =?utf-8?B?NDA5ZjE2UVYwUXhlSkRJaEZLay9uNTFxQWt4MHRLVEpQMzlmVTZlNTFPcDRm?=
+ =?utf-8?B?a0ErYnlQM0h5ZVJqcnRnVUxDWVJhR3VhZU5YMGNIRW5sbmhrbWVDcVJ6eDZs?=
+ =?utf-8?B?WkRjQWMyZHUyZXF4RkxMSDdMSVFkWjdodjYrbGVwVVdBL1lBR21jZTRNTEJW?=
+ =?utf-8?B?dGcxZFZ1VHVaZ0pRU3BJbUVqNVhQeUZTNFlsMHp2Ym4wQTQxZ01lUVU2a1VJ?=
+ =?utf-8?B?aUNpVXdQUmFiUzVtbnBtRjFVL2JrZmY2SHlVSmdaS1RrK1cyd2NYcVQ4S0Vh?=
+ =?utf-8?B?bHRJOEl0S3VnUTVoUkdUZHRYc25JR3RXTVRGZ3NKQkN0cE80eUVUREJpRUlM?=
+ =?utf-8?B?V3RVL2lxMzV3UjhERC9iVS9HYUdyVTdRVEdPNnhCY2xiaXUvVDB1bWR1WTZa?=
+ =?utf-8?B?dERmbXhZeldhQSs3YkNlclZDcG1HbmNhTitKRkFVRHVsdjlLSDlTSXlxMzZW?=
+ =?utf-8?B?RlppZmE0RG5yNmtCSkxuVElWUW5RbHlVVnloTXRvaFFaMDA3TDB6YVd3b0Zn?=
+ =?utf-8?B?MjZtcWg1WEUvZ2Z6dFFEUnh3Mno1WHo5RXJXckVuTHpjRjFSYkZJK1BFLzND?=
+ =?utf-8?B?bG5BTXEzZGhYV0p0NW1YaEwzTG0vcTZuWk5aNVpHc3JSZ2kxdWNPb0Z0ekRE?=
+ =?utf-8?B?RVpEQ1ZkOTMxMUR3NXQ3eWJGL1BsVFFmRHJBZHJha1Q1ZWVQWTJRbm9YRGw2?=
+ =?utf-8?B?OVhqcGo5OUIyb0M2TXUzejFTSEdrbU9DdjFSRjdpQ2QveUdoVXNhRlkxR3Vo?=
+ =?utf-8?B?Nk9LaTkzd0xUTlpxaEs1cFFSVXJ4Y3FkNjNZUDZkM2x4d1FUeGExcjdMWE10?=
+ =?utf-8?B?NDJrREExRzBXNjd5Y1NESkNaWEc1SnBUR0hNeTRXZDQrbEZCMnVTckxyVmcy?=
+ =?utf-8?B?WXBacmZuN24zdTlraFh4S0dLNXlKbGViTEh3ZVgwMmZiNWIrNC9jZ1plb0Vk?=
+ =?utf-8?B?ZE5MQ3hrZ1lScUY2RGJxKzU3WTRxK3dZZjM4eERJOUtRazNFM1R0VDB5UGRD?=
+ =?utf-8?B?MmNTYWp4NGl3PT0=?=
+X-Forefront-Antispam-Report:
+	CIP:52.234.111.146;CTRY:US;LANG:zh-cn;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:accountprotection.microsoft.com;PTR:messagedispatchervip.MSAEAP-Prod-BY01P.BY01P.ap.gbl;CAT:NONE;SFS:(13230040)(376014)(61400799027);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	mAtxjdd6zKEjUk73WnocAyU9uRActXuVfNI9PSbiiof75EV7EOXQs9PXEydckuRi2sgEhXcjBshCfNuqzesTaJYinfjNW44xNiZiW52Hi6YPZYkjC4Qs46TogU3cnOSV2q7HCPMzPwZbwQro6Fm+fWmZ0AiSW9QJdsS3GkHjZ9H/b5ATUxUxDxFwbzrBgMV6fWR9dcsMx9zrpZCpomBn8VYZ90NqxS4KRQT23D8K3yNXhCD8fs0h5YWhRdMMwByFcwB5GD+aprRbxZo1mqkpaIp2sNTY7PdrC2qmyvakXJW/jROH7OFOSmnEFiW6NZosizxOAqs7Aog/MeVFOI5vK3SSMxS3+AMmla4xsLSXYAXp04lJoOl0vMAqJdE1ihstuQzdUZK9Ki+XJuzBBkv4na+psnxSNq3hLv3BLfLmsjRtDRb8nFPAmo+TjoWqJ1VxP6WFHfIDk+1EbfoEc9GEpUS0fUk6htE6gSDZpN0H+NWo+EkO0LT6vb+TrbT8FC7xUPaWVn70w2uoTOQo1J7/kg==
+X-OriginatorOrg: accountprotection.microsoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jul 2024 01:37:02.0096
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bbe20a88-3380-4478-c574-08dca79349e6
+X-MS-Exchange-CrossTenant-Id: 5ba90553-c2cd-460e-b5fd-ab93ad9155c7
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5ba90553-c2cd-460e-b5fd-ab93ad9155c7;Ip=[52.234.111.146];Helo=[accountprotection.microsoft.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-DS3PEPF000099DC.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR16MB5029
+
+--=-99RN0denONUuSCuWD5cqrg==
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+已检测到最近登录到 Microsoft 帐户 13**7@qq.com 的一些异常。
+
+登录详细信息
+国家/地区: 新加坡
+IP 地址: 119.56.108.4
+日期: 2024/7/19 1:37 (GMT)
+平台: -
+浏览器: Chrome
+
+请转到最近活动页，让我们确定这是否是你本人。如果不是，我们将帮助你保护帐户。如果是，我们将在以后信任类似活动。
+
+查看最近的活动 https://account.microsoft.com/activity。
+
+若要在收到安全通知的位置选择退出或进行更改，请单击此处 https://account.live.com/SecurityNotifications/Update。
+
+谢谢!
+Microsoft 帐户团队 
+隐私声明: https://go.microsoft.com/fwlink/?LinkId=521839
+Microsoft Corporation, One Microsoft Way, Redmond, WA 98052
+
+--=-99RN0denONUuSCuWD5cqrg==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr"> 
+<head>
+<style type="text/css">
+ .link:link, .link:active, .link:visited {
+       color:#2672ec !important;
+       text-decoration:none !important;
+ }
+
+ .link:hover {
+       color:#4284ee !important;
+       text-decoration:none !important;
+ }
+</style>
+<title></title>
+</head>
+<body>
+<table dir="ltr">
+      <tr><td id="i1" style="padding:0; font-family:'Segoe UI Semibold', 'Segoe UI Bold', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:17px; color:#707070;">Microsoft 帐户</td></tr>
+      <tr><td id="i2" style="padding:0; font-family:'Segoe UI Light', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:41px; color:#2672ec;">登录活动异常</td></tr>
+      <tr><td id="i3" style="padding:0; padding-top:25px; font-size:15pt; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">已检测到最近登录到 Microsoft 帐户 <a dir="ltr" id="iAccount" class="link" style="color:#2672ec; text-decoration:none" href="mailto:13**7@qq.com">13**7@qq.com</a> 的一些异常。</td></tr>
+      <tr><td id="i4" style="padding:0; padding-top:25px; font-family:'Segoe UI Bold', 'Segoe UI Semibold', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:14px; font-weight:bold; color:#2a2a2a;">登录详细信息</td></tr>
+      <tr><td id="i5" style="padding:0; padding-top:6px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">国家/地区: 新加坡</td></tr>
+      <tr><td id="i6" style="padding:0; padding-top:6px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">IP 地址: 119.56.108.4</td></tr>
+      <tr><td id="i7" style="padding:0; padding-top:6px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">日期: 2024/7/19 1:37 (GMT)</td></tr>
+      <tr><td id="i8" style="padding:0; padding-top:6px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">平台: -</td></tr>
+      <tr><td id="i9" style="padding:0; padding-top:6px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">浏览器: Chrome</td></tr>
+      <tr><td id="i10" style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">请转到最近活动页，让我们确定这是否是你本人。如果不是，我们将帮助你保护帐户。如果是，我们将在以后信任类似活动。</td></tr>
+      <tr><td style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">
+         <table border="0" cellspacing="0"><tr><td bgcolor="#2672ec" style="background-color:#2672ec; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; min-width:50px;"><a id="i11" style="font-family: 'Segoe UI Semibold', 'Segoe UI Bold', 'Segoe UI', 'Helvetica Neue Medium', Arial, sans-serif; font-size:14px; text-align:center; text-decoration:none; font-weight:600; letter-spacing:0.02em; color:#fff;" href="https://account.microsoft.com/activity">查看最近的活动</a></td></tr></table>
+      </td></tr>
+      <tr><td id="i12" style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">若要在收到安全通知的位置选择退出或进行更改，<a id="iLink5" class="link" style="color:#2672ec; text-decoration:none" href="https://account.live.com/SecurityNotifications/Update">请单击此处</a>。</td></tr>      
+      <tr><td id="i13" style="padding:0; padding-top:25px; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">谢谢!</td></tr>
+      <tr><td id="i14" style="padding:0; font-family:'Segoe UI', Tahoma, Verdana, Arial, sans-serif; font-size:14px; color:#2a2a2a;">Microsoft 帐户团队</td></tr>
+</table>
+<div lang="zh-cn" style="margin-top:20px;margin-bottom:10px;"><a class="link" href="https://go.microsoft.com/fwlink/?LinkId=521839">隐私声明</a><div style="margin-top:10px;">Microsoft Corporation, One Microsoft Way, Redmond, WA 98052</div></div></body>
+</html>
+--=-99RN0denONUuSCuWD5cqrg==--
